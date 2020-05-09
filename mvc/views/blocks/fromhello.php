@@ -1,4 +1,4 @@
-<form action="/laptrinhmvc/Home/" method = "post">
+<form action="/laptrinhmvc/" method = "post">
 	<table style = "width: 100%">
 			<thead>
 				<tr>

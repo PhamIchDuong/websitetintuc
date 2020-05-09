@@ -17,6 +17,7 @@
 	        $this->view("master1", [
 	            "Page"=>"tintrongloai",
 	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),
+	            "breadCrumb" => json_decode($master_model3->breadCrumb(1),true),
 	     		"dangnhap"=>$dangnhap,
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
@@ -76,7 +77,8 @@
 	            "trang"=>$trang,
 	            "dangnhap"=>$dangnhap,
 	            "sotinmottrang"=>$sotinmottrang,	
-	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	            
+	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	 
+	            "breadCrumb" => json_decode($master_model3->breadCrumb($idLT),true),           
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
 	            "loaitin3"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(3),true),

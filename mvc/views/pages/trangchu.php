@@ -19,7 +19,7 @@
                  # code...
             
         ?>
-        	<a href="./Tintrongloai/Loaitin/<?php echo $value['idLT']?>"><?php echo $value['Ten']?></a>
+        	<a href="./Tintrongloai/Loaitin/<?php echo $value['idLT']?>/1/6"><?php echo $value['Ten']?></a>
         <?php 
             }
         ?>

@@ -68,6 +68,19 @@
 			}
 			return json_encode($arr);
         }
+        public function breadCrumb($idLT){
+            $sql="
+				SELECT TenTL,Ten 
+				FROM theloai,loaitin
+				WHERE theloai.idTL = loaitin.idTL AND idLT = $idLT
+			";
+			$data = mysqli_query($this->con,$sql);
+			$arr = array();
+			while($row_data = mysqli_fetch_array($data)){
+				array_push($arr, $row_data);
+			}
+			return json_encode($arr);
+        }
 
 
     }

@@ -18,6 +18,7 @@
 	        	foreach ($check as $value) {
 	        		# code...
 	        		$_SESSION["idUser"] = $value["idUser"];
+	        		
 	        	}
 	        }
 
