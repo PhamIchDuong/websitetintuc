@@ -68,6 +68,9 @@
         <div id="content-right">
 		<!--blocks/cot_phai.php-->
         <?php
+        require "blocks/".$data["dangnhap"].".php";
+
+
         require "blocks/cot_phai.php";
         ?>
         </div>

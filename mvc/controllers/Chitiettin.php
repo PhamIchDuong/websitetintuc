@@ -8,10 +8,15 @@
 	        // print_r(list_Menu(json_decode($master_model2->danhSachTheLoai(),true)));
 	        // echo "</pre>";
 	        // echo print_r($arr["0"]["0"]);
-
+	        if(!isset($_SESSION["idUser"])){
+				$dangnhap = "fromlogin";
+			}
+			else{
+				$dangnhap = "fromhello";
+			}
 	        $this->view("master1", [
 	            "Page"=>"chitiettin",
-	           
+	            "dangnhap"=>$dangnhap,
 	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	            
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
@@ -61,9 +66,15 @@
 	        // print_r(list_Menu(json_decode($master_model2->danhSachTheLoai(),true)));
 	        // echo "</pre>";
 	        // echo print_r($arr["0"]["0"]);
-
+	        if(!isset($_SESSION["idUser"])){
+				$dangnhap = "fromlogin";
+			}
+			else{
+				$dangnhap = "fromhello";
+			}
 	        $this->view("master1", [
 	            "Page"=>"chitiettin",
+	            "dangnhap"=>$dangnhap,
 	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	            
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
