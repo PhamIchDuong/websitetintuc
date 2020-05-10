@@ -1,26 +1,27 @@
 <?php
 	class Home extends Controller{
 		function SayHi(){
-			$un = "";
-			$pa = "";
-			$pa = md5($pa);
 			if(isset($_POST["btnLogin"]))
 			{
 				$un = $_POST["txtUn"];
 				$pa = $_POST["txtPa"];
 				$pa = md5($pa);
+				$master_model4 = $this->model("UserModel");
+		        $check = $master_model4->CheckDangnhap($un,$pa);
+		        //$row_check = mysqli_fetch_array($check);
+		        if(count($check) ==1)
+		        {
+		        	foreach ($check as $value) {
+		        		# code...
+		        		$_SESSION["idUser"] = $value["idUser"];
+		        		$_SESSION["Username"] = $value["Username"];
+		        		$_SESSION["idGroup"] = $value["idGroup"];
+
+		        		
+		        	}
+		        }
 			}
-			$master_model4 = $this->model("UserModel");
-	        $check = $master_model4->CheckDangnhap($un,$pa);
-	        //$row_check = mysqli_fetch_array($check);
-	        if(count($check) ==1)
-	        {
-	        	foreach ($check as $value) {
-	        		# code...
-	        		$_SESSION["idUser"] = $value["idUser"];
-	        		
-	        	}
-	        }
+			
 
 
 
@@ -46,7 +47,8 @@
 	        $this->view("master1", [
 	            "Page"=>"trangchu",
 	            "dangnhap"=>$dangnhap,
-	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	            
+	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),
+	            "SESSION" => $_SESSION,            
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
 	            "loaitin3"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(3),true),

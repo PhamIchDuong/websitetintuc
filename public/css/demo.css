@@ -1,0 +1,38 @@
+body{
+	width: 1000px;
+	margin: 0px auto;
+}
+.wrapper{
+    background-color: rgb(0, 153, 204);
+}
+nav.docs-nav a {
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid;
+    background-color: darkseagreen;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+nav.docs-nav a:hover{
+	
+	top: 5px;
+	transition: all 0.5s;
+	margin-bottom: 10px;
+
+}
+h1{
+	text-align: center;
+}
+.nav-container {
+    /* padding: 10px; */
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+table{
+    text-align: center;
+}

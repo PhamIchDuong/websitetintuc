@@ -1,8 +1,8 @@
-<form action="/laptrinhmvc/" method = "post">
+<form action="" method = "post">
 	<table style = "width: 100%">
 			<thead>
 				<tr>
-					<th>Chào bạn</th>
+					<th>Chào bạn <?php echo $data['SESSION']['Username']; ?></th>
 				</tr>
 			</thead>
 			<tbody>

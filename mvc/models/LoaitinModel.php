@@ -3,6 +3,19 @@
         public function Select_LoaiTin(){
             $sql="
 				SELECT * FROM loaitin
+				ORDER BY idLT DESC
+			";
+			$data = mysqli_query($this->con,$sql);
+			$arr = array();
+			while($row_data = mysqli_fetch_array($data)){
+				array_push($arr, $row_data);
+			}
+			return json_encode($arr);
+        }
+        public function DanhSachLoaiTin(){
+            $sql="
+				SELECT * FROM loaitin,theloai
+				WHERE loaitin.idTL = theloai.idTL
 			";
 			$data = mysqli_query($this->con,$sql);
 			$arr = array();
@@ -82,6 +95,53 @@
 			return json_encode($arr);
         }
 
+
+
+        public function ChiTietLoaiTin($idLT){
+            $sql="
+				SELECT * FROM loaitin
+				WHERE idLT = $idLT
+			";
+			$data = mysqli_query($this->con,$sql);
+			$arr = array();
+			while($row_data = mysqli_fetch_array($data)){
+				array_push($arr, $row_data);
+			}
+			return json_encode($arr);
+        }
+
+        public function Them($Ten,$Ten_KhongDau,$ThuTu,$AnHien,$idTL){
+            $sql="
+				INSERT INTO loaitin	
+				VALUES(null,'$Ten','$Ten_KhongDau','$ThuTu','$AnHien','$idTL')
+			";
+			mysqli_query($this->con,$sql);
+        }
+
+        public function Update($idLT,$Ten,$Ten_KhongDau,$ThuTu,$AnHien,$idTL){
+            $sql="
+				UPDATE `loaitin` 
+				SET `Ten`='$Ten',
+				`Ten_KhongDau`='$Ten_KhongDau',
+				`ThuTu`= '$ThuTu',
+				`AnHien`= '$AnHien',
+				`idTL`='$idTL' 
+				WHERE idLT = $idLT
+			";
+			$result = false;
+			if(mysqli_query($this->con,$sql))
+				$result = true;
+			return $result;
+        }
+
+        public function Delete($idLT){
+            $sql="
+				DELETE FROM loaitin 
+				WHERE idLT = $idLT
+			";
+
+			mysqli_query($this->con,$sql);
+        }
 
     }
 ?>

@@ -8,6 +8,11 @@
 	        // print_r(list_Menu(json_decode($master_model2->danhSachTheLoai(),true)));
 	        // echo "</pre>";
 	        // echo print_r($arr["0"]["0"]);
+	        if(isset($_POST["btnThoat"]))
+			{
+				unset($_SESSION["idUser"]);
+			}
+	        
 	        if(!isset($_SESSION["idUser"])){
 				$dangnhap = "fromlogin";
 			}
@@ -19,6 +24,7 @@
 	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),
 	            "breadCrumb" => json_decode($master_model3->breadCrumb(1),true),
 	     		"dangnhap"=>$dangnhap,
+	     		"SESSION" => $_SESSION,
 	            "loaitin1"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(1),true),
 	            "loaitin2"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(2),true),
 	            "loaitin3"=>json_decode($master_model2->danhSachLoaiTin_Theo_TheLoai(3),true),
@@ -64,6 +70,28 @@
 	        $master_model1 = $this->model("TinModel");
 	        $master_model2 = $this->model("TheLoaiModel");
 	        $master_model3 = $this->model("LoaitinModel");
+	        if(isset($_POST["btnLogin"]))
+			{
+				$un = $_POST["txtUn"];
+				$pa = $_POST["txtPa"];
+				$pa = md5($pa);
+				$master_model4 = $this->model("UserModel");
+		        $check = $master_model4->CheckDangnhap($un,$pa);
+		        //$row_check = mysqli_fetch_array($check);
+		        if(count($check) ==1)
+		        {
+		        	foreach ($check as $value) {
+		        		# code...
+		        		$_SESSION["idUser"] = $value["idUser"];
+		        		
+		        	}
+		        }
+			}
+	        if(isset($_POST["btnThoat"]))
+			{
+				unset($_SESSION["idUser"]);
+			}
+	        
 	        if(!isset($_SESSION["idUser"])){
 				$dangnhap = "fromlogin";
 			}
@@ -75,6 +103,7 @@
 	            "idLoaitin"=>$idLT,
 	            "from"=>$sotinmottrang *($trang-1),
 	            "trang"=>$trang,
+	            "SESSION" => $_SESSION,
 	            "dangnhap"=>$dangnhap,
 	            "sotinmottrang"=>$sotinmottrang,	
 	            "theloai"=>json_decode($master_model2->danhSachTheLoai(),true),	 
