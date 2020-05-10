@@ -192,7 +192,7 @@
 			]);
 	    }
 
-	    function XoaLoaiTin($tenfile,$idLT){
+	    function XoaLoaiTin($tenfil,$idLT){
 	    	$adminloaitin = $this->model("LoaitinModel");
 	    	$admintheloai = $this->model("TheLoaiModel");
 	    	if(!isset($_SESSION["idUser"]) || !$_SESSION["idGroup"] == 1)
@@ -204,7 +204,7 @@
 			header("location:/laptrinhmvc/AdminHome/LoaiTin/");
 			
 			$this->view("Admin", [
-				"Page"=> $tenfile,
+				"Page"=> $tenfil,
 				"danhsachtheloai"=>json_decode($admintheloai->danhSachTheLoai(),true),
 				"chitietloaitin"=>json_decode($adminloaitin->ChiTietLoaiTin($idLT),true)
 			]);
@@ -228,7 +228,7 @@
 	    }
 
 	    function XoaTin($tenfile,$idTin){
-	    	if(!isset($_SESSION["idUser"]) || !$_SESSION["idGroup"] == 1)
+	    	if(!isset($_SESSION["idUser"]) ||  !$_SESSION["idGroup"] == 1)
 			{
 				header("location:/laptrinhmvc/");
 			}
