@@ -7,7 +7,6 @@
 
 				header("location:/laptrinhmvc/");
 			}
-			print_r($_SESSION);
 			$this->view("Admin", [
 				"Page"=> "trangchuadmin"]);
 	    }
